@@ -1,2 +1,3 @@
 # alfred-workflows
-Alfred workflows
+
+- [LANIPAddress](./lanip)

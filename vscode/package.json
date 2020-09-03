@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "vscode-workflow",
+  "version": "1.0.0",
+  "keywords": [
+    "vscode",
+    "workflow",
+    "alfred"
+  ],
+  "author": "Simon <wsj_simon@163.com>",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "alfy": "^0.10.0"
+  }
+}

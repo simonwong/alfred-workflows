@@ -8,6 +8,8 @@
 
 - [VSCode](./vscode) ([Download](https://github.com/simonwong/alfred-workflows/releases/tag/v0.0.2))
 
+  获取 vscode 的【最近打开的文件】，包括文件夹和工作区，并快速打开
+
 ## themes
 
 - [Yueqing macOS](./themes)

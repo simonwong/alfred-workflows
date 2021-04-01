@@ -8,11 +8,13 @@ const { openedPathsList } = vscStorage
 
 let files = []
 
-for (const key in openedPathsList) {
-  if (key.includes('workspaces') || key.includes('files')) {
-    files = files.concat(openedPathsList[key])
+openedPathsList.entries.forEach(item => {
+  if (item.folderUri) {
+    files.push(item.folderUri)
+  } else if (item.workspace) {
+    files.push(item.workspace.configPath)
   }
-}
+})
 
 const data = [...new Set(files)].map(file => {
   if (typeof file === 'object' && 'configURIPath' in file) {

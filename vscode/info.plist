@@ -125,7 +125,11 @@
 			<integer>230</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>0.0.2</string>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/simonwong/alfred-workflows</string>
 </dict>
 </plist>

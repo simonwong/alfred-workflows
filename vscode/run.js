@@ -1,4 +1,5 @@
-const { exec } = require('child_process')
+import { exec } from 'child_process'
+
 const filePath = process.argv.slice(-1)[0]
 
 exec(`code ${filePath}`, (error, stdout) => {

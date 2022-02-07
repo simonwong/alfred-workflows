@@ -1,25 +1,26 @@
-const alfy = require('alfy');
-const homedir = require('os').homedir
-const readFileSync = require('fs').readFileSync
+import alfy from 'alfy'
+import os from 'os'
+import fs from 'fs'
+
+const homedir = os.homedir
+const readFileSync = fs.readFileSync
 const STORAGE_PATH = `${homedir()}/Library/Application\ Support/Code/storage.json`
 
 const vscStorage = JSON.parse(readFileSync(STORAGE_PATH).toString())
-const { openedPathsList } = vscStorage
+
+const fileItems = vscStorage.lastKnownMenubarData.menus.File.items
+
+const recentList = fileItems.find(item => item.id.startsWith('submenuitem') && item.submenu)?.submenu.items
 
 let files = []
 
-openedPathsList.entries.forEach(item => {
-  if (item.folderUri) {
-    files.push(item.folderUri)
-  } else if (item.workspace) {
-    files.push(item.workspace.configPath)
+recentList.forEach(item => {
+  if (['openRecentWorkspace', 'openRecentFile'].includes(item.id)) {
+    files.push(item.uri.path)
   }
 })
 
 const data = [...new Set(files)].map(file => {
-  if (typeof file === 'object' && 'configURIPath' in file) {
-    file = file.configURIPath
-  }
   file = decodeURI(file.replace(/^file:\/\//, ''))
   const fileSplit = file.split('/')
 

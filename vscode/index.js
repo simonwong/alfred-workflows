@@ -4,7 +4,7 @@ import fs from 'fs'
 
 const homedir = os.homedir
 const readFileSync = fs.readFileSync
-const STORAGE_PATH = `${homedir()}/Library/Application\ Support/Code/storage.json`
+const STORAGE_PATH = `${homedir()}/Library/Application\ Support/Code/User/globalStorage/storage.json`
 
 const vscStorage = JSON.parse(readFileSync(STORAGE_PATH).toString())
 

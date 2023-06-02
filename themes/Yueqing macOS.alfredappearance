@@ -22,12 +22,13 @@
         "color" : "#000000E5"
       },
       "iconPaddingHorizontal" : 4,
+      "roundness" : 0,
       "paddingVertical" : 3,
       "iconSize" : 40
     },
     "search" : {
-      "paddingVertical" : 5,
-      "background" : "#FFFFFF00",
+      "backgroundSelected" : "#016BDEFF",
+      "paddingHorizontal" : 14,
       "spacing" : 4,
       "text" : {
         "size" : 34,
@@ -35,7 +36,9 @@
         "font" : "System Light",
         "color" : "#000000FF"
       },
-      "backgroundSelected" : "#016BDEFF"
+      "background" : "#FFFFFF00",
+      "roundness" : 0,
+      "paddingVertical" : 5
     },
     "window" : {
       "color" : "#FEFFFFC0",
@@ -43,8 +46,8 @@
       "width" : 800,
       "borderPadding" : 0,
       "borderColor" : "#0000007F",
-      "blur" : 10,
-      "roundness" : 3,
+      "blur" : 24,
+      "roundness" : 12,
       "paddingVertical" : 4
     },
     "credit" : "Simon",

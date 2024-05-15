@@ -10,7 +10,9 @@
   "author": "Simon <wsj_simon@163.com>",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
-    "alfy": "^0.12.2"
+    "alfy": "^2.0.0",
+    "sql.js": "^1.10.3"
   }
 }

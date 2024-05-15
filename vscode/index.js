@@ -1,34 +1,53 @@
-import alfy from 'alfy'
-import os from 'os'
-import fs from 'fs'
+import alfy from 'alfy';
+import os from 'os';
+import fs from 'fs';
+import initSqlJs from 'sql.js';
+import { getFileNameInDB, getFullNameInDB, getPathInDB } from './utils.js';
 
-const homedir = os.homedir
-const readFileSync = fs.readFileSync
-const STORAGE_PATH = `${homedir()}/Library/Application\ Support/Code/User/globalStorage/storage.json`
+const homedir = os.homedir;
+const DB_PATH = `${homedir()}/Library/Application\ Support/Code/User/globalStorage/state.vscdb`;
+const fileBuffer = fs.readFileSync(DB_PATH);
+const SQL = await initSqlJs();
+const db = new SQL.Database(fileBuffer);
+const dbResults = db.exec("select value from ItemTable where key = 'history.recentlyOpenedPathsList'");
+db.close();
 
-const vscStorage = JSON.parse(readFileSync(STORAGE_PATH).toString())
+const resStr = dbResults[0].values.toString();
+const res = JSON.parse(resStr);
+const OpenedPathsList = res.entries;
 
-const fileItems = vscStorage.lastKnownMenubarData.menus.File.items
+const data = [];
+const setMap = {}
 
-const recentList = fileItems.find(item => item.id.startsWith('submenuitem') && item.submenu)?.submenu.items
 
-let files = []
 
-recentList.forEach(item => {
-  if (['openRecentWorkspace', 'openRecentFile'].includes(item.id)) {
-    files.push(item.uri.path)
+OpenedPathsList.forEach(item => {
+  let title = ''
+  let url = ''
+
+  if (item.workspace) {
+    url = getPathInDB(item.workspace.configPath);
+    title = `${getFileNameInDB(item.workspace.configPath)}（工作区）`;
   }
-})
 
-const data = [...new Set(files)].map(file => {
-  file = decodeURI(file.replace(/^file:\/\//, ''))
-  const fileSplit = file.split('/')
+  if (item.folderUri) {
+    url = getPathInDB(item.folderUri);
+    title = getFullNameInDB(item.folderUri);
+  }
 
-  file = file.replace(/(\s+)/g, '\\$1')
+  if (item.fileUri) {
+    url = getPathInDB(item.fileUri);
+    title = getFullNameInDB(item.fileUri);
+  }
 
-  return {
-    filePath: file,
-    title: fileSplit[fileSplit.length - 1],
+  if (url && title) {
+    if (!setMap[title]) {
+      data.push({
+        url,
+        title
+      })
+      setMap[title] = 1
+    }
   }
 })
 
@@ -36,7 +55,8 @@ const items = alfy
 	.inputMatches(data, 'title')
 	.map(element => ({
     title: element.title,
-    arg: element.filePath,
-	}));
+    subtitle: element.url,
+    arg: element.url,
+  }));
 
 alfy.output(items);

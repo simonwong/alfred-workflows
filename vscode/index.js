@@ -1,7 +1,7 @@
 import alfy from 'alfy';
 import os from 'os';
 import fs from 'fs';
-import initSqlJs from 'sql.js';
+import initSqlJs from './lib/sqljs/sql-wasm.cjs';
 import { getFileNameInDB, getFullNameInDB, getPathInDB } from './utils.js';
 
 const homedir = os.homedir;

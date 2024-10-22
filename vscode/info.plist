@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>vscodehistory</string>
+	<string>com.simon.vscode</string>
 	<key>category</key>
 	<string>Tools</string>
 	<key>connections</key>
@@ -107,7 +107,8 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>获取 VS Code 的「最近打开的文件」列表。
+数据来源于本地的 state.vscdb</string>
 	<key>uidata</key>
 	<dict>
 		<key>D5BD4A81-4820-4250-9F31-94CF9C5D5A0B</key>
@@ -125,10 +126,12 @@
 			<integer>230</integer>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>0.0.2</string>
+	<string>1.0.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/simonwong/alfred-workflows</string>
 </dict>

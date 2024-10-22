@@ -8,7 +8,11 @@
 
 - [VSCode](./vscode) ([Download](https://github.com/simonwong/alfred-workflows/releases/tag/vscode%40v0.0.3))
 
-  获取 vscode 的【最近打开的文件】，包括文件夹和工作区，并快速打开
+  获取 Visual Studio Code 的【最近打开的文件】，包括文件夹和工作区，并快速打开
+
+- [Cursor](./cursor) ([Download](https://github.com/simonwong/alfred-workflows/releases/tag/cursor%401.0.0))
+
+  获取 Cursor 的【最近打开的文件】，包括文件夹和工作区，并快速打开
 
 ## themes
 
